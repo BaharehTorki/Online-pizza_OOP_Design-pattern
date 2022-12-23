@@ -7,16 +7,16 @@ import java.util.List;
 
 public class VeganPizzaFactory extends AbstractPizzaFactory {
     @Override
-    protected Pizza getPizza(PizzaType pizzaType, List<PizzaAdditionalType> additionalTypeList) {
+    protected Pizza getPizza(PizzaType pizzaType, PizzaAdditionalType ... additionalTypeList) {
 
         switch (pizzaType) {
             case MARGHERITA_PIZZA -> {
-                return (Utils.isNullOrEmpty(additionalTypeList)) ?
+                return (additionalTypeList.length < 1) ?
                         new MargheritaPizza()
                         : new MargheritaPizza(additionalTypeList);
             }
             case PEPPERONI_PIZZA -> {
-                return (Utils.isNullOrEmpty(additionalTypeList)) ?
+                return (additionalTypeList.length < 1) ?
                         new PepperoniPizza()
                         : new PepperoniPizza(additionalTypeList);
             }

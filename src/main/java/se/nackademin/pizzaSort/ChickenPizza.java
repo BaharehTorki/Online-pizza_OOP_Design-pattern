@@ -2,20 +2,24 @@ package se.nackademin.pizzaSort;
 
 import se.nackademin.Pizza;
 import se.nackademin.PizzaAdditionalType;
+import se.nackademin.Utils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ChickenPizza implements Pizza {
-    final static int basePrice = 80;
+    private final static int basePrice = 80;
+    private List<PizzaAdditionalType> addition;
 
     public ChickenPizza() {
-        addition.forEach(addition::remove);
+        addition = new ArrayList<>();
     }
 
-    public ChickenPizza(List<PizzaAdditionalType> additionalTypeList) {
-        addition.forEach(addition::remove);
-        addition.addAll(additionalTypeList);
+    public ChickenPizza(PizzaAdditionalType ... additionalTypeList) {
+
+        addition = Arrays.asList(additionalTypeList);
     }
 
     @Override

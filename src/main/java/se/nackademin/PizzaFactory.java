@@ -1,7 +1,6 @@
 package se.nackademin;
 
 
-
 import se.nackademin.pizzaSort.BuffaloPizza;
 import se.nackademin.pizzaSort.ChickenPizza;
 import se.nackademin.pizzaSort.MeatPizza;
@@ -11,21 +10,21 @@ import java.util.List;
 public class PizzaFactory extends AbstractPizzaFactory {
 
     @Override
-    protected Pizza getPizza(PizzaType pizzaType, List<PizzaAdditionalType> additionalTypeList) {
+    protected Pizza getPizza(PizzaType pizzaType, PizzaAdditionalType... additionalTypeList) {
 
         switch (pizzaType) {
             case BUFFALO_PIZZA -> {
-                return (Utils.isNullOrEmpty(additionalTypeList)) ?
+                return (additionalTypeList.length < 1) ?
                         new BuffaloPizza()
                         : new BuffaloPizza(additionalTypeList);
             }
             case CHICKEN_PIZZA -> {
-                return (Utils.isNullOrEmpty(additionalTypeList)) ?
+                return (additionalTypeList.length < 1) ?
                         new ChickenPizza()
                         : new ChickenPizza(additionalTypeList);
             }
             case MEAT_PIZZA -> {
-                return (Utils.isNullOrEmpty(additionalTypeList)) ?
+                return (additionalTypeList.length < 1) ?
                         new MeatPizza()
                         : new MeatPizza(additionalTypeList);
             }
